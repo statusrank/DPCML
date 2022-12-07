@@ -24,7 +24,7 @@ In our paper, we evaluate our proposed method on four benchmark datasets, includ
 - CiteULike: An implicit feedback dataset that includes the preferences of users toward diffferent articles. There are two configurations of CiteULike collected from CiteULike and Google Scholar. We adopt CiteULike-T here to evaluate the performance. 
 - Steam-200k: This dataset is collected from the Steam which is the world’s most popular PC gaming hub. The observed behaviors of users include ’purchase’ and ’play’ signals. In order to obtain the implicit feedback, if a user has purchased a game as well as the playing hours play > 0, we treat this game as a positive item
 
-![Dataset detail](c:/Users/baosh/Desktop/camera_code/img/dataset.png)
+![Dataset detail](img/dataset.png)
 
 **All the data used in the paper is included in the data file for easy reproduction.**
 ## How to Run
@@ -42,7 +42,7 @@ chmod +x run.sh
 
 More experimental details could be found in the paper.
 ## Experiments
-![diversity](c:/Users/baosh/Desktop/camera_code/img/frame.png)
+![diversity](img/frame.png)
 
 # Citation & Contact
 
