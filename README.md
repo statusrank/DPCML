@@ -48,7 +48,7 @@ chmod +x run.sh
 
 More experimental details could be found in the paper.
 ## Experiments
-![diversity](img/frame.png)
+![diversity](img/div.png)
 
 # Citation & Contact
 
