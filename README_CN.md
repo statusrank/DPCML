@@ -2,58 +2,56 @@
 
 ## 环境依赖
 
-**基本要求：** 此部分应写明（可复现论文结果的）代码运行所需的环境及依赖，以确保结果的可复现性，包括但不限于:
-- 服务器的CPU、GPU型号
-- 操作系统及版本
-- python环境 （如果有）
-- pytorch、tensorflow等版本（如果有）
-- 其他第三方库，如numpy、pandas、scikit-learn的版本（如果有）
+所有实验都在一台配备了ubuntu 18.04操作系统、Intel(R) Xeon(R) Gold 6246R CPU@3.40GHz处理器和RTX 3090显卡的服务器上进行，相关依赖如下（见code/requirements.txt）：
+- python 3.8+
+- pytorch 1.8+
+- numpy
+- tqdm
+- toolz 
+- scikit-learn
+- scipy
+- pands
 
 
 ## 数据集
 
-**基本要求：** 
-1. 此处需列出论文中所涉及到的所有数据集（所涉及到的数据集都需公开并上传）。
-2. 若数据集为公开数据集，可附上（有效的）公开数据集下载链接，并在此说明各个数据集的具体处理细节，以及将下载数据存放到哪个文件夹下以保证代码的正常运行。
-3. 若数据集为在公开数据集基础上进一步构造所得，需上传该数据集或附上（有效的）公开数据集下载链接，并在此说明各个数据集的具体处理细节或给出数据集处理代码及运行方式。
+论文中主要涉及到以下四个数据集，所有数据均存放至data/文件夹下，具体如下：
+- MovieLens-1M
+- CiteULike
+- Steam-200k
+- MovieLens-10M
 
 ## 代码运行
 
 ### 安装环境依赖
 
-**基本要求：** 此处应写明如何安装每个环境依赖，以确保实验的正常运行。例如，将所有依赖存入requirements.txt文件夹中并执行（其他方式皆可）：
+执行如下命令，安装依赖：
 ```
 pip3 install -r requirements.txt
 ```
 
 ### 运行
-**基本要求：** 此处不要求特定的运行方式，但应给出每个数据集的（能复现出论文实验结果的）代码运行命令，需写明每个数据集上的准确超参数，也可以不同数据集采用不同的运行方式：
-1. 若采用argparse进行超参数，可采用如下方式：
-```
-  CUDA_VISIBLE_DEVICES=3 python3 train.py dataset-name method-name --lr=* --reg=*
-```
-2. 若采用json/yaml等方式配置超参数，需说明每个数据集读入哪个配置文件
-3. 也可通过shell脚本一键运行
 
-例子：
-#### CIFAR-10
-```shell
-CUDA_VISIBLE_DEVICES=0 python3 train.py cifar-10-long-tail --lr=0.1 ...
+可采用如下方式 (COCML对应论文中的DPCML1 （此时sampling_strategy必须设置为uniform）， HarCML对应论文中的DPCML2（此时（此时sampling_strategy必须设置为hard）)：
 ```
-#### CIFAR-100
-```shell
-CUDA_VISIBLE_DEVICES=0 python3 train.py cifar-100-long-tail --lr=0.3 ...
+  CUDA_VISIBLE_DEVICES=0 python3 train_best.py \
+    --data_path=data/dataset_name \
+    --model=model_name \
+    --margin=1.0 \
+    --lr=1e-3 \
+    --per_user_k=5 \
+    --sampling_strategy=uniform \
+    --dim=100 \
+    --reg=10  \
+    --epoch=100 \
+    --m1=0.1 \
+    --m2=0.35
 ```
-
-#### shell脚本
+也可通过配置shell脚本运行：
 ```shell
 chmod +x run.sh
 ./run.sh
 ```
 
 ## 实验结果
-**基本要求：** 此处应简单说明实验运行的输出、实验的最终结果以及与论文中实验结果的一致性。
-
-```
-具体例子可见code-example
-```
+实验过程中会进行日志保存，包括每个epoch的训练、验证、测试的相应指标。 可以看出实验结果与论文中基本一致。

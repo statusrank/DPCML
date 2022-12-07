@@ -45,8 +45,8 @@ Subsequently, you can config run.sh and run it to obtain all results:
 chmod +x run.sh
 ./run.sh
 ```
+Note that, in our paper, we leverage two widely used negative sampling strategies to alleviate the heavy computing burden of CML-based methods, i.e., uniform and hard negative sampling. To run this, in the code, COCML (must **set sampling_strategy as uniform**) refers to the DPCML1 in the paper, and HarCML (must **set sampling_strategy as hard**) is the DPCML2 in the paper. More experimental details can be found in the paper.
 
-More experimental details could be found in the paper.
 ## Experiments
 ![diversity](img/div.png)
 
