@@ -6,6 +6,9 @@ This is the official code of our paper:
 
 ![](img/frame.png)
 
+# To All Interested Developers
+I have been developing an easy-to-use pytorch library of CML-based recommendation systems to let everyone use CML-based methods easily. Please see [LibCML](https://github.com/statusrank/LibCML) for more details, where our newest studies of CML have been released.
+
 # Update
 
 I just started re-organizing our code recently; maybe there are still some bugs that do not be tested. So I am going to follow up and update the code. Please stay tuned!
